@@ -7,6 +7,7 @@ public class GameRunner {
 	GameRunner(){
 		gameFrame = new JFrame();
 	}
+	//text
 	void setup() {
 		gameFrame.setVisible(true);
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
