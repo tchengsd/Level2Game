@@ -12,13 +12,12 @@ public class GameObject {
 		this.width = width;
 		this.height = height;
 	}
-	
+
 	void update() {
-		x++;
-		y++;
+
 	}
-	
+
 	void draw(Graphics g) {
-		g.fillOval(x, y, 100, 100);
+
 	}
 }

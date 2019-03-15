@@ -1,4 +1,6 @@
-/GameRunner.class
-/GamePanel.class
-/GameObject.class
 /GameCharacter.class
+/GameObject.class
+/GamePanel.class
+/GameRunner.class
+/GamePlayer.class
+/GamePlayer2.class
