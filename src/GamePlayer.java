@@ -4,6 +4,7 @@ import java.awt.Graphics;
 public class GamePlayer extends GameObject {
 	int speed = 10;
 	int direction;
+	int health = 300;
 	boolean isMoving = false;
 
 	GamePlayer(int x, int y, int width, int height) {

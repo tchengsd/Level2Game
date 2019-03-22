@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 public class GamePlayer2 extends GameObject {
 	int speed = 10;
 	int direction;
+	int health = 300;
 	boolean isMoving = false;
 
 	GamePlayer2(int x, int y, int width, int height) {

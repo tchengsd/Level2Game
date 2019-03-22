@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -60,6 +61,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 		one.draw(g);
 		two.draw(g);
+		g.setFont(regular);
+		g.setColor(Color.WHITE);
+		g.drawString("Player 1", 30, 40);
+		g.drawString("Player 2", 880, 40);
+		g.setColor(Color.YELLOW);
+		g.fillRect(120, 20, one.health, 24);
+		g.fillRect(575, 20, two.health, 24);
 	}
 
 	void drawEndState(Graphics g) {
@@ -115,6 +123,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			if (currentState > END_STATE) {
 				currentState = MENU_STATE;
 			}
+		} else if (k == KeyEvent.VK_ENTER) {
+			JOptionPane.showMessageDialog(null,
+					"Player 1: Use A and D to move left and right. Press C or V to attack. Press S to block.\n"
+							+ "Player 2: Use arrow keys to move left and right. Press COMMA or PERIOD to attack. Press down arrow to block.\n"
+							+ "");
 		}
 	}
 
