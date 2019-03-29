@@ -17,6 +17,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
+	int winner = 0;
 	Font titleFont;
 	Font regular;
 	GamePlayer one = new GamePlayer(50, 250, 100, 500);
@@ -75,7 +76,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 		g.setFont(titleFont);
 		g.setColor(Color.MAGENTA);
-		g.drawString("Player 0 wins!", 100, 150);
+		g.drawString("Player " + winner + " wins!", 100, 150);
 	}
 
 	@Override
