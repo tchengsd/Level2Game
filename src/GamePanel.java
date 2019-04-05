@@ -22,6 +22,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font regular;
 	GamePlayer one = new GamePlayer(50, 250, 100, 500);
 	GamePlayer2 two = new GamePlayer2(850, 250, 100, 500);
+	GameManage manage = new GameManage(one, two);
 
 	GamePanel() {
 		fps = new Timer(1000 / 60, this);
@@ -38,8 +39,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-		one.update();
-		two.update();
+		manage.update();
 	}
 
 	void updateEndState() {
@@ -60,8 +60,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
-		one.draw(g);
-		two.draw(g);
+		manage.draw(g);
 		g.setFont(regular);
 		g.setColor(Color.WHITE);
 		g.drawString("Player 1", 30, 40);

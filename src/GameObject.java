@@ -6,6 +6,7 @@ public class GameObject {
 	int y;
 	int width;
 	int height;
+	boolean isAlive = true;
 	Rectangle CollisionBox;
 
 	GameObject(int x, int y, int width, int height) {
