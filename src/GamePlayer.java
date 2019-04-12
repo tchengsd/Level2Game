@@ -6,6 +6,7 @@ public class GamePlayer extends GameObject {
 	int direction;
 	int health = 300;
 	boolean isMoving = false;
+	GameAttack attack;
 
 	GamePlayer(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -22,6 +23,7 @@ public class GamePlayer extends GameObject {
 				x += speed;
 			}
 		}
+		attack.update();
 	}
 
 	void move(int direction) {
@@ -29,11 +31,15 @@ public class GamePlayer extends GameObject {
 			isMoving = true;
 			this.direction = direction;
 		}
-
 	}
 
 	void draw(Graphics g) {
 		g.setColor(Color.ORANGE);
 		g.fillRect(x, y, width, height);
+		attack.draw(g);
+	}
+
+	void attack() {
+		attack = new GameAttack(x + 100, y + 250, 100, 10);
 	}
 }

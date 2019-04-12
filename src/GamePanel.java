@@ -118,6 +118,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		int k = e.getKeyCode();
 		if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT) {
 			two.move(k);
+		} else if (k == KeyEvent.VK_C) {
+			one.attack();
+		} else if (k == KeyEvent.VK_COMMA) {
+			two.attack();
 		} else if (k == KeyEvent.VK_SPACE) {
 			currentState++;
 			if (currentState > END_STATE) {
