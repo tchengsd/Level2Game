@@ -38,7 +38,7 @@ public class GamePlayer2 extends GameObject {
 	void draw(Graphics g) {
 		g.setColor(Color.MAGENTA);
 		g.fillRect(x, y, width, height);
-		attack.draw(g);
+		attack.update(g);
 	}
 
 	void attack() {

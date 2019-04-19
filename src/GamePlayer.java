@@ -36,7 +36,7 @@ public class GamePlayer extends GameObject {
 	void draw(Graphics g) {
 		g.setColor(Color.ORANGE);
 		g.fillRect(x, y, width, height);
-		attack.draw(g);
+		attack.update(g);
 	}
 
 	void attack() {

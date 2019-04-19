@@ -18,4 +18,13 @@ public class GameManage {
 		a.draw(g);
 		b.draw(g);
 	}
+
+	void checkCollision() {
+		if (a.CollisionBox.intersects(b.attack.CollisionBox)) {
+			a.health -= b.attack.damage;
+		}
+		if (b.CollisionBox.intersects(a.attack.CollisionBox)) {
+			b.health -= a.attack.damage;
+		}
+	}
 }

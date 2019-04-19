@@ -78,8 +78,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.drawString("Player " + winner + " wins!", 100, 150);
 	}
 
-	@Override
-
 	public void paintComponent(Graphics g) {
 		if (currentState == MENU_STATE) {
 			drawMenuState(g);
@@ -120,8 +118,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			two.move(k);
 		} else if (k == KeyEvent.VK_C) {
 			one.attack();
+			one.attack.frames.start();
 		} else if (k == KeyEvent.VK_COMMA) {
 			two.attack();
+			two.attack.frames.start();
 		} else if (k == KeyEvent.VK_SPACE) {
 			currentState++;
 			if (currentState > END_STATE) {

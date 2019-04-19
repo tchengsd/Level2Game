@@ -7,24 +7,30 @@ import javax.swing.Timer;
 
 public class GameAttack extends GameObject implements ActionListener {
 	Timer frames = new Timer(30000 / 60, this);
+	final int damage = 5;
 
 	GameAttack(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
 
-	void update() {
-
+	void update(Graphics g) {
+		super.update();
+		draw(g);
 	}
 
 	void draw(Graphics g) {
-		g.setColor(Color.GRAY);
-		g.fillRect(x, y, width, height);
+		if (frames.isRunning() == true) {
+			g.setColor(Color.GRAY);
+			g.fillRect(x, y, width, height);
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
+		if (e.getSource() == frames) {
+			frames.stop();
+		}
 	}
 }
