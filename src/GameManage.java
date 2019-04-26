@@ -3,6 +3,7 @@ import java.awt.Graphics;
 public class GameManage {
 	GamePlayer a;
 	GamePlayer2 b;
+	Graphics g;
 
 	GameManage(GamePlayer a, GamePlayer2 b) {
 		this.a = a;
@@ -22,9 +23,14 @@ public class GameManage {
 	void checkCollision() {
 		if (a.CollisionBox.intersects(b.attack.CollisionBox)) {
 			a.health -= b.attack.damage;
+			a.update();
+			a.drawUpdate(g);
 		}
 		if (b.CollisionBox.intersects(a.attack.CollisionBox)) {
 			b.health -= a.attack.damage;
+			b.barX += a.attack.damage;
+			b.update();
+			b.drawUpdate(g);
 		}
 	}
 }

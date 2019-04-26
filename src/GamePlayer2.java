@@ -6,6 +6,7 @@ public class GamePlayer2 extends GameObject {
 	int speed = 10;
 	int direction;
 	int health = 300;
+	int barX = 575;
 	boolean isMoving = false;
 	GameAttack attack;
 
@@ -27,6 +28,11 @@ public class GamePlayer2 extends GameObject {
 		attack.update();
 	}
 
+	void drawUpdate(Graphics g) {
+		update();
+		draw(g);
+	}
+
 	void move(int direction) {
 		if (!isMoving) {
 			isMoving = true;
@@ -38,6 +44,10 @@ public class GamePlayer2 extends GameObject {
 	void draw(Graphics g) {
 		g.setColor(Color.MAGENTA);
 		g.fillRect(x, y, width, height);
+		g.setColor(Color.WHITE);
+		g.drawString("Player 2", 880, 40);
+		g.setColor(Color.YELLOW);
+		g.fillRect(barX, 20, health, 24);
 		attack.update(g);
 	}
 

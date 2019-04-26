@@ -62,12 +62,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 		manage.draw(g);
 		g.setFont(regular);
-		g.setColor(Color.WHITE);
-		g.drawString("Player 1", 30, 40);
-		g.drawString("Player 2", 880, 40);
-		g.setColor(Color.YELLOW);
-		g.fillRect(120, 20, one.health, 24);
-		g.fillRect(575, 20, two.health, 24);
 	}
 
 	void drawEndState(Graphics g) {
