@@ -108,14 +108,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int k = e.getKeyCode();
+		boolean attacking = false;
 		if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT) {
 			two.move(k);
 		} else if (k == KeyEvent.VK_C) {
 			one.attack();
 			one.attack.frames.start();
+			attacking = true;
 		} else if (k == KeyEvent.VK_COMMA) {
 			two.attack();
 			two.attack.frames.start();
+			attacking = true;
 		} else if (k == KeyEvent.VK_SPACE) {
 			currentState++;
 			if (currentState > END_STATE) {
@@ -126,6 +129,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 					"Player 1: Use A and D to move left and right. Press C or V to attack. Press S to block.\n"
 							+ "Player 2: Use arrow keys to move left and right. Press COMMA or PERIOD to attack. Press down arrow to block.\n"
 							+ "");
+		}
+		if(attacking) {
+			manage.checkCollision();
 		}
 	}
 

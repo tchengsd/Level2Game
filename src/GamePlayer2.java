@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
@@ -28,11 +29,6 @@ public class GamePlayer2 extends GameObject {
 		attack.update();
 	}
 
-	void drawUpdate(Graphics g) {
-		update();
-		draw(g);
-	}
-
 	void move(int direction) {
 		if (!isMoving) {
 			isMoving = true;
@@ -45,6 +41,8 @@ public class GamePlayer2 extends GameObject {
 		g.setColor(Color.MAGENTA);
 		g.fillRect(x, y, width, height);
 		g.setColor(Color.WHITE);
+		Font regular = new Font("Arial", Font.PLAIN, 24);
+		g.setFont(regular);
 		g.drawString("Player 2", 880, 40);
 		g.setColor(Color.YELLOW);
 		g.fillRect(barX, 20, health, 24);

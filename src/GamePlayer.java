@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class GamePlayer extends GameObject {
@@ -25,10 +26,6 @@ public class GamePlayer extends GameObject {
 		}
 		attack.update();
 	}
-	
-	void drawUpdate(Graphics g) {
-		draw(g);
-	}
 
 	void move(int direction) {
 		if (!isMoving) {
@@ -41,6 +38,8 @@ public class GamePlayer extends GameObject {
 		g.setColor(Color.ORANGE);
 		g.fillRect(x, y, width, height);
 		g.setColor(Color.WHITE);
+		Font regular = new Font("Arial", Font.PLAIN, 24);
+		g.setFont(regular);
 		g.drawString("Player 1", 30, 40);
 		g.setColor(Color.YELLOW);
 		g.fillRect(120, 20, health, 24);

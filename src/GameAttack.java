@@ -23,6 +23,8 @@ public class GameAttack extends GameObject implements ActionListener {
 		if (frames.isRunning() == true) {
 			g.setColor(Color.GRAY);
 			g.fillRect(x, y, width, height);
+			g.setColor(Color.RED);
+			g.drawRect(CollisionBox.x, CollisionBox.y, CollisionBox.width, CollisionBox.height);
 		}
 	}
 
