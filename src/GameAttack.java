@@ -6,17 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class GameAttack extends GameObject implements ActionListener {
-	Timer frames = new Timer(30000 / 60, this);
+	private Timer frames = new Timer(30000 / 60, this);
 	final int damage = 5;
-
-	GameAttack(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	boolean active;
+	
+	GameAttack(int x, int y) {
+		super(x, y, 100, 10);
+		active = true;
+		frames.start();
 		// TODO Auto-generated constructor stub
 	}
 
-	void update(Graphics g) {
+	void update() {
 		super.update();
-		draw(g);
 	}
 
 	void draw(Graphics g) {
@@ -30,9 +32,9 @@ public class GameAttack extends GameObject implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("attackingg");
 		// TODO Auto-generated method stub
-		if (e.getSource() == frames) {
 			frames.stop();
-		}
+			active = false;
 	}
 }

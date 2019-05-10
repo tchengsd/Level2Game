@@ -24,8 +24,7 @@ public class GameManage {
 			a.health -= b.attack.damage;
 			a.update();
 			System.out.println("oof a");
-		}
-		if (a.attack != null && b.CollisionBox.intersects(a.attack.CollisionBox)) {
+		} else if (a.attack != null && b.CollisionBox.intersects(a.attack.CollisionBox)) {
 			b.health -= a.attack.damage;
 			b.barX += a.attack.damage;
 			b.update();
@@ -33,3 +32,4 @@ public class GameManage {
 		}
 	}
 }
+ 

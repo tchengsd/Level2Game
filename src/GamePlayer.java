@@ -7,6 +7,7 @@ public class GamePlayer extends GameObject {
 	int direction;
 	int health = 300;
 	boolean isMoving = false;
+	boolean attacking = false;
 	GameAttack attack;
 
 	GamePlayer(int x, int y, int width, int height) {
@@ -24,7 +25,10 @@ public class GamePlayer extends GameObject {
 				x += speed;
 			}
 		}
-		attack.update();
+		if (attack != null) {
+			attack.update();
+			attacking = attack.active;
+		}
 	}
 
 	void move(int direction) {
@@ -43,10 +47,15 @@ public class GamePlayer extends GameObject {
 		g.drawString("Player 1", 30, 40);
 		g.setColor(Color.YELLOW);
 		g.fillRect(120, 20, health, 24);
-		attack.update(g);
+		g.setColor(Color.RED);
+		g.drawRect(CollisionBox.x, CollisionBox.y, CollisionBox.width, CollisionBox.height);
+		if (attack != null) {
+			attack.draw(g);
+		}
 	}
 
 	void attack() {
-		attack = new GameAttack(x + 100, y + 250, 100, 10);
+		attack = new GameAttack(x + 100, y + 250);
+		attacking = true;
 	}
 }
