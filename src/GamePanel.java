@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateMenuState() {
-
+		
 	}
 
 	void updateGameState() {
@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateEndState() {
-
+		
 	}
 
 	void drawMenuState(Graphics g) {
@@ -98,8 +98,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		// p1
 		int k = e.getKeyChar();
-		System.out.println(k);
+		// System.out.println(k);
 		if (k == KeyEvent.VK_A || k == KeyEvent.VK_D) {
 			one.move(k);
 		} else if (k == KeyEvent.VK_C) {
@@ -110,8 +111,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		// p2
 		int k = e.getKeyCode();
-		System.out.println(k);
+		// System.out.println(k);
 		if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT) {
 			two.move(k);
 		} else if (k == KeyEvent.VK_COMMA) {
@@ -121,11 +123,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			if (currentState > END_STATE) {
 				currentState = MENU_STATE;
 			}
-		} else if (k == KeyEvent.VK_ENTER) {
-			JOptionPane.showMessageDialog(null,
-					"Player 1: Use A and D to move left and right. Press C or V to attack. Press S to block.\n"
-							+ "Player 2: Use arrow keys to move left and right. Press COMMA or PERIOD to attack. Press down arrow to block.\n"
-							+ "");
+		} else if (k == KeyEvent.VK_ENTER && currentState == 0) {
+			JOptionPane.showMessageDialog(null, "Player 1: Use A and D to move left and right. Press C to attack.\n"
+					+ "Player 2: Use arrow keys to move left and right. Press COMMA to attack.\n" + "");
 		}
 	}
 

@@ -9,7 +9,7 @@ public class GameAttack extends GameObject implements ActionListener {
 	private Timer frames = new Timer(30000 / 60, this);
 	final int damage = 5;
 	boolean active;
-	
+
 	GameAttack(int x, int y) {
 		super(x, y, 100, 10);
 		active = true;
@@ -34,7 +34,7 @@ public class GameAttack extends GameObject implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("attackingg");
 		// TODO Auto-generated method stub
-			frames.stop();
-			active = false;
+		frames.stop();
+		active = false;
 	}
 }

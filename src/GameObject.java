@@ -7,6 +7,8 @@ public class GameObject {
 	int width;
 	int height;
 	boolean isAlive = true;
+	boolean isMoving = false;
+	int direction;
 	Rectangle CollisionBox;
 
 	GameObject(int x, int y, int width, int height) {
@@ -22,6 +24,15 @@ public class GameObject {
 	}
 
 	void draw(Graphics g) {
+
+	}
+
+	void move(int direction) {
+		if (!isMoving) {
+			isMoving = true;
+			this.direction = direction;
+			System.out.println("moving");
+		}
 
 	}
 }

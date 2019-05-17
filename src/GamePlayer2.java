@@ -5,10 +5,8 @@ import java.awt.event.KeyEvent;
 
 public class GamePlayer2 extends GameObject {
 	int speed = 10;
-	int direction;
 	int health = 300;
 	int barX = 575;
-	boolean isMoving = false;
 	boolean attacking = false;
 	GameAttack attack;
 
@@ -31,14 +29,6 @@ public class GamePlayer2 extends GameObject {
 			attack.update();
 			attacking = attack.active;
 		}
-	}
-
-	void move(int direction) {
-		if (!isMoving) {
-			isMoving = true;
-			this.direction = direction;
-		}
-
 	}
 
 	void draw(Graphics g) {

@@ -28,3 +28,10 @@ public class GameRunner {
 		runner.setup();
 	}
 }
+/*
+*****Progress for today (16 May)*****
+Added move method to super class instead of individual player classes.
+Still need to make P1's inputs work properly.
+Might add other methods to super class.
+Will do collisions later.
+*/

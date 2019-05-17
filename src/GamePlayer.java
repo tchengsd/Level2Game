@@ -1,12 +1,11 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 
 public class GamePlayer extends GameObject {
 	int speed = 10;
-	int direction;
 	int health = 300;
-	boolean isMoving = false;
 	boolean attacking = false;
 	GameAttack attack;
 
@@ -18,23 +17,16 @@ public class GamePlayer extends GameObject {
 	void update() {
 		super.update();
 		if (isMoving) {
-			if (direction == 97) {
+			if (direction == KeyEvent.VK_A) {
 				x -= speed;
 			}
-			if (direction == 100) {
+			if (direction == KeyEvent.VK_D) {
 				x += speed;
 			}
 		}
 		if (attack != null) {
 			attack.update();
 			attacking = attack.active;
-		}
-	}
-
-	void move(int direction) {
-		if (!isMoving) {
-			isMoving = true;
-			this.direction = direction;
 		}
 	}
 
