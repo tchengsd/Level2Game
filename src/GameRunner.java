@@ -29,9 +29,8 @@ public class GameRunner {
 	}
 }
 /*
-*****Progress for today (16 May)*****
-Added move method to super class instead of individual player classes.
-Still need to make P1's inputs work properly.
-Might add other methods to super class.
-Will do collisions later.
+*****Progress for today (23 May)*****
+Made P1's inputs work properly.
+Collisions now work.
+Will see about fixing the problems with the 2-player game.
 */

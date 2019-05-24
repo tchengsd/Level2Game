@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-	int winner = 0;
+	int winner;
 	Font titleFont;
 	Font regular;
 	GamePlayer one = new GamePlayer(50, 250, 100, 500);
@@ -35,15 +35,22 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateMenuState() {
-		
+
 	}
 
 	void updateGameState() {
 		manage.update();
+		if (two.health == 0) {
+			winner = 1;
+			currentState = END_STATE;
+		} else if (one.health == 0) {
+			winner = 2;
+			currentState = END_STATE;
+		}
 	}
 
 	void updateEndState() {
-		
+
 	}
 
 	void drawMenuState(Graphics g) {
@@ -98,14 +105,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		// p1
-		int k = e.getKeyChar();
-		// System.out.println(k);
-		if (k == KeyEvent.VK_A || k == KeyEvent.VK_D) {
-			one.move(k);
-		} else if (k == KeyEvent.VK_C) {
-			one.attack();
-		}
 	}
 
 	@Override
@@ -113,19 +112,34 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		// p2
 		int k = e.getKeyCode();
-		// System.out.println(k);
 		if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT) {
 			two.move(k);
 		} else if (k == KeyEvent.VK_COMMA) {
 			two.attack();
+			manage.attacker = two;
+		}
+		// p1
+		else if (k == KeyEvent.VK_A || k == KeyEvent.VK_D) {
+			one.move(k);
+		} else if (k == KeyEvent.VK_C) {
+			one.attack();
+			manage.attacker = one;
 		} else if (k == KeyEvent.VK_SPACE) {
 			currentState++;
 			if (currentState > END_STATE) {
 				currentState = MENU_STATE;
 			}
+			if (currentState == MENU_STATE) {
+				one = new GamePlayer(50, 250, 100, 500);
+				two = new GamePlayer2(850, 250, 100, 500);
+				manage = new GameManage(one, two);
+			}
 		} else if (k == KeyEvent.VK_ENTER && currentState == 0) {
 			JOptionPane.showMessageDialog(null, "Player 1: Use A and D to move left and right. Press C to attack.\n"
 					+ "Player 2: Use arrow keys to move left and right. Press COMMA to attack.\n" + "");
+		}
+		if (one.attacking || two.attacking) {
+			manage.checkCollision();
 		}
 	}
 
@@ -134,6 +148,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		one.isMoving = false;
 		two.isMoving = false;
+		manage.attacker = null;
 	}
-
 }
