@@ -1,9 +1,9 @@
 import java.awt.Graphics;
 
 public class GameManage {
-	GamePlayer one;
-	GamePlayer2 two;
-	GameObject attacker;
+	private GamePlayer one;
+	private GamePlayer2 two;
+	private GameObject attacker;
 
 	GameManage(GamePlayer a, GamePlayer2 b) {
 		this.one = a;
@@ -22,16 +22,42 @@ public class GameManage {
 
 	void checkCollision() {
 		if (attacker != null) {
-			if (attacker == two && one.CollisionBox.intersects(two.attack.CollisionBox)) {
-				one.health -= two.attack.damage;
+			if (attacker == two && one.CollisionBox.intersects(two.getAttack().CollisionBox)) {
+				one.reduceHealth(two.getAttack().damage);
 				one.update();
 				System.out.println("oof a");
-			} else if (attacker == one && two.CollisionBox.intersects(one.attack.CollisionBox)) {
-				two.health -= one.attack.damage;
-				two.barX += one.attack.damage;
+			} else if (attacker == one && two.CollisionBox.intersects(one.getAttack().CollisionBox)) {
+				two.reduceHealth(one.getAttack().damage);
 				two.update();
 				System.out.println("filler text b");
 			}
+		}
+	}
+
+	public GamePlayer getOne() {
+		return one;
+	}
+
+	public void setOne(GamePlayer one) {
+		this.one = one;
+	}
+
+	public GamePlayer2 getTwo() {
+		return two;
+	}
+
+	public void setTwo(GamePlayer2 two) {
+		this.two = two;
+	}
+
+	public GameObject getAttacker() {
+		return attacker;
+	}
+
+	public void setAttacker(GameObject attacker) {
+		this.attacker = attacker;
+		if (attacker != null) {
+			attacker.attack();
 		}
 	}
 }

@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -20,14 +23,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	int winner;
 	Font titleFont;
 	Font regular;
-	GamePlayer one = new GamePlayer(50, 250, 100, 500);
-	GamePlayer2 two = new GamePlayer2(850, 250, 100, 500);
+	GamePlayer one = new GamePlayer(50, 250, 150, 500);
+	GamePlayer2 two = new GamePlayer2(850, 250, 150, 500);
 	GameManage manage = new GameManage(one, two);
+	public static BufferedImage orange;
+	public static BufferedImage blue;
 
 	GamePanel() {
 		fps = new Timer(1000 / 60, this);
 		titleFont = new Font("Arial", Font.PLAIN, 48);
 		regular = new Font("Arial", Font.PLAIN, 24);
+	    try {
+            orange = ImageIO.read(this.getClass().getResourceAsStream("stick-figure-orange-hi.png"));
+            blue = ImageIO.read(this.getClass().getResourceAsStream("blue.png"));
+    } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
 	}
 
 	void startGame() {
@@ -40,10 +52,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void updateGameState() {
 		manage.update();
-		if (two.health == 0) {
+		if (two.getHealth() == 0) {
 			winner = 1;
 			currentState = END_STATE;
-		} else if (one.health == 0) {
+		} else if (one.getHealth() == 0) {
 			winner = 2;
 			currentState = END_STATE;
 		}
@@ -115,15 +127,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT) {
 			two.move(k);
 		} else if (k == KeyEvent.VK_COMMA) {
-			two.attack();
-			manage.attacker = two;
+			manage.setAttacker(two);
 		}
 		// p1
 		else if (k == KeyEvent.VK_A || k == KeyEvent.VK_D) {
 			one.move(k);
 		} else if (k == KeyEvent.VK_C) {
-			one.attack();
-			manage.attacker = one;
+			manage.setAttacker(one);
 		} else if (k == KeyEvent.VK_SPACE) {
 			currentState++;
 			if (currentState > END_STATE) {
@@ -138,9 +148,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			JOptionPane.showMessageDialog(null, "Player 1: Use A and D to move left and right. Press C to attack.\n"
 					+ "Player 2: Use arrow keys to move left and right. Press COMMA to attack.\n" + "");
 		}
-		if (one.attacking || two.attacking) {
 			manage.checkCollision();
-		}
 	}
 
 	@Override
@@ -148,6 +156,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		one.isMoving = false;
 		two.isMoving = false;
-		manage.attacker = null;
+		manage.setAttacker(null);
 	}
 }

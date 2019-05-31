@@ -35,4 +35,7 @@ public class GameObject {
 		}
 
 	}
+	void attack() {
+		
+	}
 }

@@ -3,15 +3,20 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
-public class GamePlayer2 extends GameObject {
-	int speed = 10;
-	int health = 300;
-	int barX = 575;
-	boolean attacking = false;
-	GameAttack attack;
+public class GamePlayer2 extends Player {
+	int barX;
+	
+	public int getBarX() {
+		return barX;
+	}
+
+	public void setBarX(int barX) {
+		this.barX = barX;
+	}
 
 	GamePlayer2(int x, int y, int width, int height) {
 		super(x, y, width, height);
+		barX = 575;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,36 +24,39 @@ public class GamePlayer2 extends GameObject {
 		super.update();
 		if (isMoving) {
 			if (direction == KeyEvent.VK_LEFT) {
-				x -= speed;
+				x -= getSpeed();
 			}
 			if (direction == KeyEvent.VK_RIGHT) {
-				x += speed;
+				x += getSpeed();
 			}
 		}
-		if (attack != null) {
-			attack.update();
-			attacking = attack.active;
+		if (getAttack() != null) {
+			getAttack().update();
+			setAttacking(getAttack().active);
 		}
 	}
 
 	void draw(Graphics g) {
-		g.setColor(Color.MAGENTA);
-		g.fillRect(x, y, width, height);
+		g.drawImage(GamePanel.blue, x, y, width, height, null);
 		g.setColor(Color.WHITE);
 		Font regular = new Font("Arial", Font.PLAIN, 24);
 		g.setFont(regular);
 		g.drawString("Player 2", 880, 40);
 		g.setColor(Color.YELLOW);
-		g.fillRect(barX, 20, health, 24);
-		g.setColor(Color.GREEN);
+		g.fillRect(barX, 20, getHealth(), 24);
+		g.setColor(Color.RED);
 		g.drawRect(CollisionBox.x, CollisionBox.y, CollisionBox.width, CollisionBox.height);
-		if (attack != null) {
-			attack.draw(g);
+		if (getAttack() != null) {
+			getAttack().draw(g);
 		}
 	}
 
 	void attack() {
-		attack = new GameAttack(x - 100, y + 250);
-		attacking = true;
+		setAttack(new GameAttack(x - 100, y + 250));
+		setAttacking(true);
+	}
+	void reduceHealth(int damage) {
+		super.reduceHealth(damage);
+		barX += damage;
 	}
 }

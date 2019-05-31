@@ -29,8 +29,8 @@ public class GameRunner {
 	}
 }
 /*
-*****Progress for today (23 May)*****
-Made P1's inputs work properly.
-Collisions now work.
-Will see about fixing the problems with the 2-player game.
+*****Progress for today (30 May)*****
+Made super() class for players.
+Moved stuff to super() class.
+Added images for players.
 */
