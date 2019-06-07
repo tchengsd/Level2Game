@@ -1,13 +1,26 @@
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JApplet;
 
 public class GamePlayer extends Player {
+	public static BufferedImage sword;
 
 	GamePlayer(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
+		try {
+			sword = ImageIO.read(this.getClass().getResourceAsStream("sword-clipart-horizontal.gif"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void update() {
@@ -40,11 +53,16 @@ public class GamePlayer extends Player {
 			getAttack().draw(g);
 		}
 	}
-
+	private void playSound(String fileName) {
+		AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
+		sound.play();
+	}
 	
 
 	void attack() {
-		setAttack(new GameAttack(x + width, y + 250));
+		setAttack(new GameAttack(x + width, y + 215));
 		setAttacking(true);
+		getAttack().attacker = 1;
+		playSound("swordSheath.wav");
 	}
 }

@@ -24,10 +24,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont;
 	Font regular;
 	GamePlayer one = new GamePlayer(50, 250, 150, 500);
-	GamePlayer2 two = new GamePlayer2(850, 250, 150, 500);
+	GamePlayer2 two = new GamePlayer2(800, 250, 150, 500);
 	GameManage manage = new GameManage(one, two);
 	public static BufferedImage orange;
 	public static BufferedImage blue;
+
 
 	GamePanel() {
 		fps = new Timer(1000 / 60, this);
@@ -36,6 +37,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	    try {
             orange = ImageIO.read(this.getClass().getResourceAsStream("stick-figure-orange-hi.png"));
             blue = ImageIO.read(this.getClass().getResourceAsStream("blue.png"));
+            
     } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -89,6 +91,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(titleFont);
 		g.setColor(Color.MAGENTA);
 		g.drawString("Player " + winner + " wins!", 100, 150);
+		if (winner == 1) {
+			g.drawImage(orange, 500, 200, 300, 700, null);
+		} else if (winner == 2) {
+			g.drawImage(blue, 500, 200, 300, 700, null);
+		}
 	}
 
 	public void paintComponent(Graphics g) {
@@ -140,13 +147,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				currentState = MENU_STATE;
 			}
 			if (currentState == MENU_STATE) {
-				one = new GamePlayer(50, 250, 100, 500);
-				two = new GamePlayer2(850, 250, 100, 500);
+				one = new GamePlayer(50, 250, 150, 500);
+				two = new GamePlayer2(800, 250, 150, 500);
 				manage = new GameManage(one, two);
 			}
 		} else if (k == KeyEvent.VK_ENTER && currentState == 0) {
 			JOptionPane.showMessageDialog(null, "Player 1: Use A and D to move left and right. Press C to attack.\n"
-					+ "Player 2: Use arrow keys to move left and right. Press COMMA to attack.\n" + "");
+					+ "Player 2: Use arrow keys to move left and right. Press COMMA to attack.\n" + "DO NOT HOLD ATTACK BUTTONS");
 		}
 			manage.checkCollision();
 	}

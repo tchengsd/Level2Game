@@ -29,8 +29,6 @@ public class GameRunner {
 	}
 }
 /*
-*****Progress for today (30 May)*****
-Made super() class for players.
-Moved stuff to super() class.
-Added images for players.
+*****Progress for today (6 June)*****
+Added images for attacks.
 */
