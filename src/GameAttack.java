@@ -30,8 +30,6 @@ public class GameAttack extends GameObject implements ActionListener {
 			} else if (attacker == 2) {
 				g.drawImage(GamePlayer2.sword, x, y, width, height, null);
 			}
-			g.setColor(Color.RED);
-			g.drawRect(CollisionBox.x, CollisionBox.y, CollisionBox.width, CollisionBox.height);
 		}
 	}
 

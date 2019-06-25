@@ -28,7 +28,3 @@ public class GameRunner {
 		runner.setup();
 	}
 }
-/*
-*****Progress for today (6 June)*****
-Added images for attacks.
-*/

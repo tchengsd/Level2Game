@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JApplet;
 
-public class GamePlayer extends Player {
+public class GamePlayer extends GameFighter {
 	public static BufferedImage sword;
 
 	GamePlayer(int x, int y, int width, int height) {
@@ -47,8 +47,6 @@ public class GamePlayer extends Player {
 		g.drawString("Player 1", 30, 40);
 		g.setColor(Color.YELLOW);
 		g.fillRect(120, 20, getHealth(), 24);
-		g.setColor(Color.RED);
-		g.drawRect(CollisionBox.x, CollisionBox.y, CollisionBox.width, CollisionBox.height);
 		if (getAttack() != null) {
 			getAttack().draw(g);
 		}

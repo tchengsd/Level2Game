@@ -1,11 +1,11 @@
 
-public class Player extends GameObject {
+public class GameFighter extends GameObject {
 	private int speed;
 	private int health;
 	private boolean attacking;
 	private GameAttack attack;
 
-	Player(int x, int y, int width, int height) {
+	GameFighter(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		speed = 10;
 		health = 300;
