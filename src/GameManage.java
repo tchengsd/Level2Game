@@ -25,11 +25,9 @@ public class GameManage {
 			if (attacker == two && one.CollisionBox.intersects(two.getAttack().CollisionBox)) {
 				one.reduceHealth(two.getAttack().damage);
 				one.update();
-				System.out.println("oof a");
 			} else if (attacker == one && two.CollisionBox.intersects(one.getAttack().CollisionBox)) {
 				two.reduceHealth(one.getAttack().damage);
 				two.update();
-				System.out.println("filler text b");
 			}
 		}
 	}

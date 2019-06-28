@@ -21,6 +21,7 @@ public class GamePlayer extends GameFighter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		setAttack(new GameAttack(x + width, y + 215));
 	}
 
 	void update() {
@@ -51,14 +52,15 @@ public class GamePlayer extends GameFighter {
 			getAttack().draw(g);
 		}
 	}
+
 	private void playSound(String fileName) {
 		AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
 		sound.play();
 	}
-	
 
 	void attack() {
-		setAttack(new GameAttack(x + width, y + 215));
+		getAttack().setPosition(x + width, y + 215);
+		getAttack().start();
 		setAttacking(true);
 		getAttack().attacker = 1;
 		playSound("swordSheath.wav");

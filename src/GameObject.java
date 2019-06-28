@@ -31,7 +31,6 @@ public class GameObject {
 		if (!isMoving) {
 			isMoving = true;
 			this.direction = direction;
-			System.out.println("moving");
 		}
 
 	}

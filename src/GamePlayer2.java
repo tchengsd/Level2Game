@@ -31,6 +31,7 @@ public class GamePlayer2 extends GameFighter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		setAttack(new GameAttack(x - 150, y + 215));
 	}
 
 	void update() {
@@ -68,7 +69,8 @@ public class GamePlayer2 extends GameFighter {
 	}
 
 	void attack() {
-		setAttack(new GameAttack(x - 150, y + 215));
+		getAttack().setPosition(x - 150, y + 215);
+		getAttack().start();
 		setAttacking(true);
 		getAttack().attacker = 2;
 		playSound("swordSheath.wav");

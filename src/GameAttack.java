@@ -13,8 +13,6 @@ public class GameAttack extends GameObject implements ActionListener {
 
 	GameAttack(int x, int y) {
 		super(x, y, 150, 30);
-		active = true;
-		frames.start();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -32,10 +30,19 @@ public class GameAttack extends GameObject implements ActionListener {
 			}
 		}
 	}
+	
+	void start() {
+		active = true;
+		frames.start();
+	}
+	
+	void setPosition(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("attackingg");
 		// TODO Auto-generated method stub
 		frames.stop();
 		active = false;
